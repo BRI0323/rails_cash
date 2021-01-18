@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-12-19
+  name: MyString
+  event: MyString
+  count: 1
+  inflow: 1
+  outflow: 1
+
+two:
+  date: 2020-12-19
+  name: MyString
+  event: MyString
+  count: 1
+  inflow: 1
+  outflow: 1

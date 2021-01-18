@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+  <%= image_tag 'p5-bg.jpeg',class: 'img-responsive' %>
+  <h1>子どもたちのお小遣い帳</h1>
+
+  <h3>祐斗残り:<%=Cash.where(name:'祐斗').all.sum(:inflow)-Cash.where(name:'祐斗').all.sum(:outflow)%>円 | 奈緒残り:<%=Cash.where(name:'奈緒').all.sum(:inflow)-Cash.where(name:'奈緒').all.sum(:outflow)%>円</h3>
+  <%=link_to('cashes/new') do %>
+  <button class="btn btn-primary btn-lg">新規登録</button>
+  <%end%>
+
+ <legend>名前検索機能 </legend>
+<%= form_tag(cashes_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil  ,class: 'btn btn-primary'%>
+<% end %>
+
+<div class="text-center">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>なまえ</th>
+          <th>イベント</th>
+          <th>もらったお金</th>
+          <th>つかったお金</th>
+          <th colspan="2">メニュー</th>
+        </tr>
+      </thead>
+      　　　
+      <tbody>
+        <% @cashes.each do |cash| %>
+        <tr>
+          <td><%= cash.date %></td>
+          <td><%= cash.name %></td>
+          <td><%= cash.event %></td>
+          <td><%= cash.inflow %></td>
+          <td><%= cash.outflow %></td>
+          <!--<td><%= link_to '詳細', cash %></td>-->
+          <td><%= link_to '編集', edit_cash_path(cash) ,class: 'btn btn-primary'%></td>
+          <td><%= link_to '削除', cash, method: :delete, data: { confirm: '本当に削除してもよろしいですか?' } ,class: "btn btn-danger"%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

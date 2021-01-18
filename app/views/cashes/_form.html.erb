@@ -1,0 +1,41 @@
+<%= form_with(model: cash, local: true) do |form| %>
+<% if cash.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(cash.errors.count, "error") %> prohibited this cash from being saved:</h2>
+
+
+  <% cash.errors.full_messages.each do |message| %>
+  <%= message %>
+  <% end %>
+</div>
+<% end %>
+<br>
+<div class="col-md-5 col-sm-6 col-xs-12">
+  <div class="form_group">
+    <legend><%= form.label :日付 %></legend>
+    <%= form.date_select :date , {},{class: "form-control  bootstrap-date"} %>
+  </div>
+  <div class="form_group">
+    <legend><%= form.label :名前 %></legend>
+    <%= form.select :name, ['祐斗', '奈緒'], {include_blank: '名前を選んでね'}, class: "form-control" %>
+  </div>
+  <div class="form_group">
+    <legend><%= form.label :できごと %></legend>
+    <%= form.text_field :event ,placeholder: 'できごとを書いてね', rows: 20, class: "form-control" %>
+  </div>
+  <!--<div class="form_group">
+      <%= form.label :個数 %>
+      <%= form.number_field :count , class: "form-control" %>
+    </div>-->
+  <div class="form_group">
+     <legend><%= form.label :使ったお金 %></legend>
+    <%= form.number_field :outflow ,placeholder:'使ったお金を入力',class: "form-control"%>
+  </div>
+  <div class="form_group">
+     <legend><%= form.label :もらったお金 %></legend>
+  <%= form.number_field :inflow  ,placeholder:'もらったお金を入力',class: "form-control"%>
+</div>
+<div class="actions">
+  <%= form.submit('保存',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
+</div>
+<% end %>

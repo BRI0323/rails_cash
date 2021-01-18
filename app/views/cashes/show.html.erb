@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container">
+<h1>詳細画面</h1>
+<fieldset>
+<legend>  
+<table class="table table-striped">
+<tr>
+<th>内容</th>
+<th>項目</th>
+</tr>
+
+<tr>
+<td><strong>日付:</strong></td>
+<td><%= @cash.date %></td>
+</tr>
+
+<tr>
+<td><strong>名前:</strong></td>
+<td><%= @cash.name %></td>
+</tr>
+
+<tr>
+<td><strong>できごと:</strong></td>
+<td><%= @cash.event %></td>
+</tr>
+
+<!--<tr>
+<td><strong>個数:</strong></td>
+<td><%= @cash.count %></td>
+</tr>-->
+
+<tr>
+<td><strong>もらったお金:</strong></td>
+<td><%= @cash.inflow %></td>
+</tr>
+
+<tr>
+<td><strong>使ったお金:</strong></td>
+<td><%= @cash.outflow %></td>
+</tr>
+
+</table>
+</div>
+
+<%=link_to(edit_cash_path(@cash)) do %>
+            <button class="btn btn-primary btn-lg" >編集</button>
+        <%end%>
+
+<%=link_to('/cashes') do %>
+  <button class="btn btn-primary btn-lg" >TOPに戻る</button>
+<%end%>
